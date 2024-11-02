@@ -137,6 +137,9 @@ import { useAuthStore } from '../../../core/Data/stores/auth';
             patient :patient.value.surname +" "+patient.value.name,
         }
         ws.send(JSON.stringify(message))
+        
+             
+   
     }
     
     async function getMesure(){

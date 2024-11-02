@@ -67,6 +67,7 @@ const items:Array<Accordion> = [
     },
 
 ]
+
 const client = new Patients()
 const clientConsult = new Consultation()
 const mesureClient = new Mesure();
@@ -163,7 +164,7 @@ onBeforeMount(async ()=>{
                     </div>
                     <div class="rounded-2xl p-4 bg-white mt-3 shadow-xl" >
                         <div class="flex text-lg text-clickdoc">
-                            <img src="https://test.clickdoc.ma/mesure.png" class="h-6 w-6"> &nbsp;&nbsp;
+                            <img src="/public/icons/mesure.png" class="h-6 w-6"> &nbsp;&nbsp;
                             <span class="font-bold">
                                 Données vitales
                             </span>
@@ -221,7 +222,7 @@ onBeforeMount(async ()=>{
                                 </ul>
                             </el-col>
                             <el-col :lg="9">
-                                <img src="https://test.clickdoc.ma/silhouette.png" class="w-full">
+                                <img src="/public/icons/silhouette.png" class="w-full">
                             </el-col>
                         </el-row>
                     </div>
@@ -232,7 +233,7 @@ onBeforeMount(async ()=>{
                             </el-icon>&nbsp;&nbsp;&nbsp;&nbsp; Finaliser - privé 
                         </button>
                         <button  class=" btn btn-success btn-block" @click="async () => { finalisation.isPrivate=false ; await saveConsultation()  }"> 
-                            <el-icon>
+                            <el-icon>R
                                 <Unlock/>  
                             </el-icon>&nbsp;&nbsp;&nbsp;&nbsp; Finaliser - publique 
                         </button>
