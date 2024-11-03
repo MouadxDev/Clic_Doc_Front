@@ -2,8 +2,8 @@ const ENV = {
     "VITE_BACKEND_API_old":"https://api-cd.clickdoc.ma/api",
     "VITE_BACKEND_old":"https://api-cd.clickdoc.ma",
 
-    "VITE_BACKEND_API":"http://localhost:8000/api",
-    "VITE_BACKEND":"http://localhost:8000/",
+    "VITE_BACKEND_API":"http://10.243.210.11:8000/api",
+    "VITE_BACKEND":"http://10.243.210.11:8000/",
     
     "VITE_BACKEND_URL_AUTH":"/auth",
     "VITE_BACKEND_URL_INITIATE":"/initiate",
