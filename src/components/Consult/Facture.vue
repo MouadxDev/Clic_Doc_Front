@@ -12,6 +12,8 @@ const factureClient = new Facture()
 const articleClient = new Article()
 const acteClient = new ActeMedical()
 
+
+
 const actes :Ref<any> = ref([])
 
 const facture : Ref<any> = ref({
@@ -30,7 +32,10 @@ const article : Ref<any> = ref({
 
 async function getFacture() {
     facture.value=await factureClient.facture(consult.consult)
+  
 }
+getFacture()
+
 
 async function generateFacture() {
     facture.value=await factureClient.add({consultation_id:consult.consult})
@@ -44,7 +49,9 @@ async function saveFacture() {
 async function addArticle() {
     if(article.value.id==undefined)
     {
+        article.value.facture_id = facture.value.facture.id;
         await articleClient.add(article.value)
+       
     }
     else
     {
@@ -64,6 +71,7 @@ async function removeArticle(x:any) {
 }
 async function getActes(){
     actes.value = await acteClient.getAll()
+  
 }
 
 function total(){
@@ -114,19 +122,22 @@ onBeforeMount(async()=>{
                     </el-col>
                     <el-col :span="4">
                         <el-form-item label="&nbsp">
-                            <button class="btn btn-sm btn-block background-clickdoc" type="button" @click="async()=>{await addArticle()}"> Ajouter </button>
+                            <button class="btn btn-sm btn-block background-clickdoc" type="button" @click="async()=>{await addArticle()}"> Ajouter kkk </button>
                         </el-form-item>
-                    </el-col>
+                    </el-col> 
                 </el-row>
             </el-form>
             <br>
             <el-table :data="facture.liste" >
-                <el-table-column prop="libelle" label=" Libellé" />
+                <el-table-column prop="libelle" label="Libellé" />
                 <el-table-column prop="prix" label=" Prix" width="150px" />
                 <el-table-column width="100px">
                     <template #default="scope">
-                        <el-button class="btn btn-sm btn-link background-clickdoc" type="button" @click="()=>{article=scope.row;facture.liste.splice(scope.index,-1)}" ><el-icon><Edit/></el-icon></el-button>
-                        <el-button class="btn btn-sm btn-link btn-danger" type="button" @click="async ()=>{ await removeArticle(scope.row.id) }"><el-icon><Delete/></el-icon></el-button>
+                        <div class="cont_btn_up">
+
+                            <el-button class="btn btn-sm btn-link background-clickdoc btn_up" type="button" @click="()=>{article=scope.row;facture.liste.splice(scope.index,-1)}" ><el-icon><Edit/></el-icon></el-button>
+                            <el-button class="btn btn-sm btn-link btn-danger btn_up" type="button" @click="async ()=>{ await removeArticle(scope.row.id) }"><el-icon><Delete/></el-icon></el-button>
+                        </div>
                     </template>
                 </el-table-column>
             </el-table>
@@ -149,3 +160,13 @@ onBeforeMount(async()=>{
         </div>
     </div>
 </template>
+
+<style>
+.btn_up {
+    width: 35px;
+    margin-left: 0px;
+}
+.cont_btn_up{
+    display: flex;
+}
+</style>

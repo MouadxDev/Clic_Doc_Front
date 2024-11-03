@@ -31,6 +31,8 @@
   });
   
   ws.addEventListener('message',  (event:any) => {
+    console.log("get Message")
+    console.log(event.data)
     const content = JSON.parse(event.data)
     const audio = new Audio('/notification.mp3');
     if(authStore.user.id  &&  content.entite == authStore.user.entity_id && authStore.user.role=='assistant')

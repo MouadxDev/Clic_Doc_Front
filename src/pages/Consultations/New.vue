@@ -264,6 +264,8 @@ const article : Ref<any> = ref({
 
 async function getFacture() {
     facture.value=await factureClient.facture(consult.consult)
+    console.log("facture.value")
+    console.log(facture.value)
 }
 
 async function generateFacture() {
@@ -591,7 +593,7 @@ function total(){
                                 </el-form>
                                 <br>
                                 <el-table :data="facture.liste" >
-                                    <el-table-column prop="libelle" label=" Libellé" />
+                                    <el-table-column prop="libelle" label="Libellé" />
                                     <el-table-column prop="prix" label=" Prix" width="150px" />
                                     <el-table-column width="100px">
                                         <template #default="scope">
