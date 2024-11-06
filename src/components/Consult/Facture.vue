@@ -122,7 +122,8 @@ onBeforeMount(async()=>{
                     </el-col>
                     <el-col :span="4">
                         <el-form-item label="&nbsp">
-                            <button class="btn btn-sm btn-block background-clickdoc" type="button" @click="async()=>{await addArticle()}"> Ajouter kkk </button>
+                            <!-- kkkk  -->
+                            <button class="btn btn-sm btn-block background-clickdoc" type="button" @click="async()=>{await addArticle()}"> Ajouter</button>
                         </el-form-item>
                     </el-col> 
                 </el-row>

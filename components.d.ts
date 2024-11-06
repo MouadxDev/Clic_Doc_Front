@@ -47,5 +47,6 @@ declare module 'vue' {
     UiMenuAnt: typeof import('./src/components/Ui/ui-menu-ant.vue')['default']
     UiSheet: typeof import('./src/components/Ui/ui-sheet.vue')['default']
     UiTable: typeof import('./src/components/Ui/ui-table.vue')['default']
+    UiVoice: typeof import('./src/components/Ui/ui-voice.vue')['default']
   }
 }
