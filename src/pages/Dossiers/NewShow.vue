@@ -41,48 +41,48 @@ import { useAuthStore } from '../../../core/Data/stores/auth';
    
     const tabs = [
         {
-            icon:"/public/icons/argent.png",
+            icon:"/src/assets/public/icons/argent.png",
             label:"Situation",
             name:"sit-financiere"
         },
         {
-            icon:"/public/icons/imagerie.png",
+            icon:"/src/assets/public/icons/imagerie.png",
             label:"Imagerie",
             name:"imagerie"
         },
         {
-            icon:"/public/icons/sang.png",
+            icon:"/src/assets/public/icons/sang.png",
             label:"Analyses",
             name:"analyses"
         },
         {
-            icon:"/public/icons/consultation.png",
+            icon:"/src/assets/public/icons/consultation.png",
             label:"Consultations",
             name:"consultations"
         },
 
         {
-            icon:"/public/icons/consultation.png",
+            icon:"/src/assets/public/icons/consultation.png",
             label:"Traitements",
             name:"traitement"
         },
         {
-            icon:"/public/icons/ordonnance.png",
+            icon:"/src/assets/public/icons/ordonnance.png",
             label:"Ordonnances",
             name:"ant-ordonnances"
         },
         {
-            icon:"/public/icons/consultation.png",
+            icon:"/src/assets/public/icons/consultation.png",
             label:"Rendez vous",
             name:"rendez-vous"
         },
         {
-            icon:"/public/icons/history.png",
+            icon:"/src/assets/public/icons/history.png",
             label:"Antécédents",
             name:"ants"
         },
         {
-            icon:"/public/icons/history.png",
+            icon:"/src/assets/public/icons/history.png",
             label:"Tableau personnalisé",
             name:"tableau-personnalise"
         },
@@ -261,7 +261,7 @@ import { useAuthStore } from '../../../core/Data/stores/auth';
                     </div>
                     <div class="rounded-2xl h-32 p-4 bg-white mt-3 shadow-xl" >
                         <div class="flex text-lg text-green-500">
-                            <img src="/public/icons/argent.png" class="h-6 w-6"> &nbsp;&nbsp;
+                            <img src="/src/assets/public/icons/argent.png" class="h-6 w-6"> &nbsp;&nbsp;
                             <span class="font-bold" >
                                 Observations
                             </span>
@@ -270,7 +270,7 @@ import { useAuthStore } from '../../../core/Data/stores/auth';
                     </div>
                     <div class="rounded-2xl p-4 bg-white mt-3 shadow-xl" >
                         <div class="flex text-lg text-clickdoc">
-                            <img src="/public/icons/mesure.png" class="h-6 w-6"> &nbsp;&nbsp;
+                            <img src="/src/assets/public/icons/mesure.png" class="h-6 w-6"> &nbsp;&nbsp;
                             <span class="font-bold">
                                 Données vitales
                             </span>
@@ -331,7 +331,7 @@ import { useAuthStore } from '../../../core/Data/stores/auth';
                                 </ul>
                             </el-col>
                             <el-col :lg="9">
-                                <img src="/public/icons/silhouette.png" class="w-full">
+                                <img src="/src/assets/public/icons/silhouette.png" class="w-full">
                             </el-col>
                         </el-row>
                     </div>

@@ -168,7 +168,7 @@
             <div class="stats mt-2 shadow w-full">
                 <div class="stat">
                     <div class="stat-figure text-clickdoc">
-                        <img src="/public/icons/argent.png" class="h-8 w-8">
+                        <img src="/src/assets/public/icons/argent.png" class="h-8 w-8">
                     </div>
                     <div class="stat-title">Chiffre d'affaire mensuel</div>
                     <div class="stat-value"> {{ report.mca }} </div>
@@ -176,7 +176,7 @@
                 
                 <div class="stat">
                     <div class="stat-figure text-clickdoc">
-                        <img src="/public/icons/argent.png" class="h-8 w-8">
+                        <img src="/src/assets/public/icons/argent.png" class="h-8 w-8">
                     </div>
                     <div class="stat-title">Revenu d'aujourd'hui</div>
                     <div class="stat-value">{{  report.dca }}</div>
@@ -184,7 +184,7 @@
                 
                 <div class="stat">
                     <div class="stat-figure text-clickdoc">
-                        <img src="/public/icons/salle-dattente.png" class="h-8 w-8">
+                        <img src="/src/assets/public/icons/salle-dattente.png" class="h-8 w-8">
                     </div>
                     <div class="stat-title">Patients en attente</div>
                     <div class="stat-value">{{ report.wL }}</div>
@@ -192,7 +192,7 @@
 
                 <div class="stat">
                     <div class="stat-figure text-clickdoc">
-                        <img src="/public/icons/dossiers.png" class="h-8 w-8">
+                        <img src="/src/assets/public/icons/dossiers.png" class="h-8 w-8">
                     </div>
                     <div class="stat-title">Patients traités </div>
                     <div class="stat-value">{{ report.patients }}</div>

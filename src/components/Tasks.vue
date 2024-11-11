@@ -121,7 +121,7 @@
         
         <div class="Show-Arr" @click="toggleArchivedTasks" v-if="store.user.role !== 'assistant'">
             <p>{{ showArchived ? 'Afficher Tâches' : 'Afficher Archive' }}</p> 
-            <el-icon><img src="/public/Svg/visible.svg" alt="Toggle View" class="fill-gray" /></el-icon>
+            <el-icon><img src="/src/assets/public/Svg/visible.svg" alt="Toggle View" class="fill-gray" /></el-icon>
         </div>
 
         <el-table :data="showArchived ? archivedTasks : tasks">
@@ -143,11 +143,11 @@
                 <div class="actions-container">
                 <!-- Delete Action -->
                 <button  @click="deleteTask(scope.row)">
-                    <el-icon><img src="/public/Svg/trush.svg" alt="Delete" /></el-icon>
+                    <el-icon><img src="/src/assets/public/Svg/trush.svg" alt="Delete" /></el-icon>
                 </button>
                 <!-- Archive Action -->
                 <button  @click="archiveTask(scope.row)">
-                    <el-icon><img src="/public/Svg/archive.svg" alt="Archive" /></el-icon>
+                    <el-icon><img src="/src/assets/public/Svg/archive.svg" alt="Archive" /></el-icon>
                 </button>
                 </div>
             </template>

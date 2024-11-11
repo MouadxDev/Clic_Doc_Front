@@ -2,8 +2,8 @@ const ENV = {
     "VITE_BACKEND_API_old":"https://api-cd.clickdoc.ma/api",
     "VITE_BACKEND_old":"https://api-cd.clickdoc.ma",
 
-    "VITE_BACKEND_API":"http://165.227.152.200:9000/api",
-    "VITE_BACKEND":"http://165.227.152.200:9000/",
+    "VITE_BACKEND_API":"http://192.168.1.21:9000/api",
+    "VITE_BACKEND":"http://192.168.1.21:9000/",
     
     "VITE_BACKEND_URL_AUTH":"/auth",
     "VITE_BACKEND_URL_INITIATE":"/initiate",
@@ -47,7 +47,7 @@ const ENV = {
     "VITE_BACKEND_URL_LOGIN":"/login",
     "VITE_BACKEND_URL_LOGOUT":"/logout",
 
-    "AI_Voice2Text":"http://165.227.152.200:5000/transcribe"
+    "AI_Voice2Text":"https://clickdoc.webredirect.org/flask-audio-api/"
 
 
 }

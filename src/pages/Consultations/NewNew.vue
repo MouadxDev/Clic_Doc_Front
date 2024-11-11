@@ -164,7 +164,7 @@ onBeforeMount(async ()=>{
                     </div>
                     <div class="rounded-2xl p-4 bg-white mt-3 shadow-xl" >
                         <div class="flex text-lg text-clickdoc">
-                            <img src="/public/icons/mesure.png" class="h-6 w-6"> &nbsp;&nbsp;
+                            <img src="/src/assets/public/icons/mesure.png" class="h-6 w-6"> &nbsp;&nbsp;
                             <span class="font-bold">
                                 Données vitales
                             </span>
@@ -222,7 +222,7 @@ onBeforeMount(async ()=>{
                                 </ul>
                             </el-col>
                             <el-col :lg="9">
-                                <img src="/public/icons/silhouette.png" class="w-full">
+                                <img src="/src/assets/public/icons/silhouette.png" class="w-full">
                             </el-col>
                         </el-row>
                     </div>
