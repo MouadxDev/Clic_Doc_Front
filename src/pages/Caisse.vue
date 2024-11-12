@@ -20,6 +20,8 @@ const filter = ref("")
 const table = ref()
 const table1 = ref()
 
+let firstId: null = null;
+
 const paiement :Ref<any> = ref({
     patient_id:0,
     amount:0,
@@ -45,9 +47,9 @@ const fieldsCharge = [
 ]
 
 const fieldsPayment = [
-    {prop:"uid",label:"Montant"},
-    {prop:"amount",label:"Motif"},
-    {prop:"type",label:"Motif"},
+    {prop:"uid",label:"UID"},
+    {prop:"amount",label:"Montant"},
+    {prop:"type",label:"Type"},
     {prop:"created_at",isDate:true,label:"Date"},
 ]
 
@@ -59,10 +61,32 @@ const charge : Ref<any> =  ref({
 async function searchThings()
 {
     patients.value = await patientClient.search(filter.value)
+    // console.log(patients.value)
 }
 
 async function getData(){
     deets.value = await clientF.deets(patient.value.id)
+       
+    if ('id' in deets.value) {
+        firstId = deets.value.id;
+    } else {
+        // Otherwise, search in nested objects and arrays
+        for (const key in deets.value) {
+            if (Array.isArray(deets.value[key])) {
+                // Check the first item in any array for an `id`
+                if (deets.value[key].length > 0 && 'id' in deets.value[key][0]) {
+                    firstId = deets.value[key][0].id;
+                    break;
+                }
+            } else if (typeof deets.value[key] === 'object' && 'id' in deets.value[key]) {
+                // Check in nested objects
+                firstId = deets.value[key].id;
+                break;
+            }
+        }
+    }
+
+    // console.log("First ID:", firstId);
 }
 
 async function impCharge(){
@@ -77,13 +101,18 @@ async function impCharge(){
 }
 
 async function saveFacture(){
+    paiement.value.patient_id =patient.value.id;
+    paiement.value.facture_id = firstId;
+
     await clientP.add(paiement.value)
     paiement.value={
         patient_id:0,
         amount:0,
         type:"Espèce"
     }
-    await clientF.update({id:paiement.value.patient_id,statut:statut})
+    
+    // await clientF.update({id:paiement.value.patient_id,statut:statut})
+    
     addPayment.value=false
     await getData()
     await getReports()
@@ -91,6 +120,7 @@ async function saveFacture(){
 
 async function getReports(){
     const data = await clientP.getReport("")
+
     report.value.entries = 0
     data?.entries.forEach((element:any) => {
         report.value.entries += element.amount
@@ -171,7 +201,7 @@ watch(filter, async () => {
                                         ref="table"
                                         :hasButton="false" 
                                         :client="clientP" 
-                                        :fields="fieldsPayment" 
+                                        :fields="fieldsPayment"
                                         :noHeader="true"
                                         :isMain="false"
                                         :actions="[]"

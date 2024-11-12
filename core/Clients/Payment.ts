@@ -12,6 +12,7 @@ export class Payment {
     public async getAll(request : any) : Promise<IResponse> {
         try {
             const response = await this.client.get("")
+            
             return response.data
         }
         catch(error:any )
