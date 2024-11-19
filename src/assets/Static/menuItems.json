@@ -2,76 +2,76 @@
     "mainMenu": [
         {
             "text": "Tableau de bord",
-            "icon": "/src/assets/public/icons/tableau-de-bord.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/tableau-de-bord.png",
             "route": "/"
         },
         {
             "text": "Agenda",
-            "icon": "/src/assets/public/icons/agenda.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/agenda.png",
             "route": "/agenda"
         }
     ],
     "adminMenu": [
         {
             "text": "Licences",
-            "icon": "/src/assets/public/icons/business-people.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/business-people.png",
             "route": "/licences"
         },
         {
             "text": "Meds Labo",
-            "icon": "/src/assets/public/icons/medicaments.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/medicaments.png",
             "route": "/laboratoires-medicament"
         }
     ],
     "defaultMenu": [
         {
             "text": "Salle d'attente",
-            "icon": "/src/assets/public/icons/salle-dattente.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/salle-dattente.png",
             "route": "/salle-attente"
         },
         {
             "text": "Dossiers",
-            "icon": "/src/assets/public/icons/dossiers.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/dossiers.png",
             "route": "/dossiers"
         },
         {
             "text": "Consultations",
-            "icon": "/src/assets/public/icons/consultant.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/consultant.png",
             "route": "/consultations"
         },
         {
             "text": "Ordonnances",
-            "icon": "/src/assets/public/icons/ordonnance.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/ordonnance.png",
             "route": "/ordonnances"
         },
         {
             "text": "Analyses",
-            "icon": "/src/assets/public/icons/analyse-de-sang.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/analyse-de-sang.png",
             "route": "/analyses"
         },
         {
             "text": "Actes médicaux",
-            "icon": "/src/assets/public/icons/soins-medicaux.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/soins-medicaux.png",
             "route": "/actes-medicaux"
         },
         {
             "text": "Personnel",
-            "icon": "/src/assets/public/icons/business-people.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/business-people.png",
             "route": "/personnel"
         },
         {
             "text": "Médicaments",
-            "icon": "/src/assets/public/icons/medicaments.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/medicaments.png",
             "route": "/medicaments"
         },
         {
             "text": "Liste Analyses",
-            "icon": "/src/assets/public/icons/analyses.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/analyses.png",
             "route": "/analyses"
         },
         {
             "text": "Caisse",
-            "icon": "/src/assets/public/icons/caisse-enregistreuse.png",
+            "icon": "https://clickdoc.webredirect.org/public/icons/caisse-enregistreuse.png",
             "route": "/caisse"
         }
     ]
