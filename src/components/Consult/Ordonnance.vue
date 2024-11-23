@@ -5,11 +5,21 @@ import {useConsultStore} from "../../../core/Data/stores/consultation"
 import { Ordonnance } from '../../../core/Clients/Ordonnance';
 import { Medicament } from '../../../core/Clients/Medicament';
 import ENV from '../../../core/env'
+import { computed, RefSymbol } from "@vue/reactivity";
 
 const consult = useConsultStore();
 const ordonnanceClient = new Ordonnance()
 const medicamentClient = new Medicament()
 const medicaments : Ref<any> = ref([])
+
+
+//Filter Logic
+const searchTerm: Ref<string> = ref('');
+const filteredMedicaments = computed(() => {
+    return medicaments.value.filter((medicament: any) =>
+        medicament.nom.toLowerCase().includes(searchTerm.value.toLowerCase())
+    );
+});
 
 const prescription : Ref<any> = ref({
     consultation_id:consult.consult,
@@ -47,6 +57,17 @@ onBeforeMount(async()=>{
     medicaments.value = await medicamentClient.getAll();
     ordonnance.value = await getOrdonnance()
 })
+
+const frequencies = [
+  { label: 'Par jour', value: 'par_jour' },
+  { label: 'Par heure', value: 'par_heure' },
+  { label: 'Par minute', value: 'par_minute' },
+  { label: 'Par mois', value: 'par_mois' },
+  { label: 'Par semaine', value: 'par_semaine' },
+  { label: 'Par an', value: 'par_an' },
+  
+];
+
 </script>
 <template>
     <div class="container">
@@ -54,9 +75,14 @@ onBeforeMount(async()=>{
             <el-row :gutter="10" >
                 <el-col :span="14">
                     <el-form-item label="Medicament">
-                        <el-select class="w-full" v-model="prescription.medicament_id" @change="async () => { doses = await medicamentClient.getByID(prescription.medicament_id)  }" >
-                            <el-option 
-                                v-for="m in medicaments"
+                        <el-select 
+                            class="w-full" 
+                            v-model="prescription.medicament_id" 
+                            placeholder="Rechercher un médicament"
+                            filterable
+                        >
+                            <el-option
+                                v-for="m in filteredMedicaments"
                                 :key="m.id"
                                 :value="m.id"
                                 :label="m.nom"
@@ -64,6 +90,18 @@ onBeforeMount(async()=>{
                         </el-select>
                     </el-form-item>
                 </el-col>
+                <!-- <el-col :span="5">
+                    <el-form-item label="Fréquence">
+                        <el-select v-model="prescription.frequence" placeholder="Sélectionner la fréquence">
+                            <el-option 
+                                v-for="freq in frequencies" 
+                                :key="freq.value" 
+                                :value="freq.value" 
+                                :label="freq.label" 
+                            />
+                        </el-select>
+                    </el-form-item>
+                </el-col> -->
                 <el-col :span="7">
                     <el-form-item label="Posologie (fois/jour)">
                         <el-input v-model="prescription.posologie" />
@@ -83,8 +121,9 @@ onBeforeMount(async()=>{
                     {{ scope.row.medicament }} 
                 </template>
             </el-table-column>
+            <!-- <el-table-column label="Fréquence" prop="frequence"  /> -->
             <el-table-column label="Posologie" prop="posologie"  />
-            <el-table-column width="50px">
+            <el-table-column width="75px">
                 <template #default="scope">
                     <el-button class="btn btn-sm btn-danger background-clickdoc" type="button" @click="async ()=>{ await removeOrdonnance(scope.row.id) }"><el-icon><Delete/></el-icon></el-button>
                 </template>

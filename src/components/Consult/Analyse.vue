@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { Ref , onBeforeMount, ref } from "vue";
+import { Ref , computed, onBeforeMount, ref } from "vue";
 import {useConsultStore} from "../../../core/Data/stores/consultation"
 
 import { Demande } from '../../../core/Clients/DemandeAnalyse';
@@ -19,6 +19,14 @@ const demandes : Ref<any> = ref([])
 const analyses : Ref<any> = ref([])
 const analyseClient = new Analyses()
 const demandeClient = new Demande()
+
+const searchTerm: Ref<string> = ref('');
+
+const filteredAnalyses = computed(() => {
+    return analyses.value.filter((analyse: any) =>
+        analyse.libelle.toLowerCase().includes(searchTerm.value.toLowerCase())
+    );
+});
 
 
 
@@ -53,14 +61,20 @@ onBeforeMount(async ()=>{
             <el-row :gutter="10" >
                 <el-col :span="21">
                     <el-form-item label="Analyse">
-                        <el-select class="w-full" v-model="demande.analyse_id"  >
-                            <el-option 
-                                v-for="m in analyses"
-                                :key="m.id"
-                                :value="m.id"
-                                :label="m.libelle"
-                            />
-                        </el-select>
+                    <el-select
+                        class="w-full"
+                        v-model="demande.analyse_id"
+                        placeholder="Rechercher une analyse"
+                        filterable
+                    >
+                        <el-option
+                            v-for="m in filteredAnalyses"
+                            :key="m.id"
+                            :value="m.id"
+                            :label="m.libelle"
+                            @click="async ()=>{await setDemande()}"
+                        />
+                    </el-select>
                     </el-form-item>
                 </el-col>
                 <el-col :span="3">
@@ -79,7 +93,7 @@ onBeforeMount(async ()=>{
                     <a v-if="scope.row.document!=null" class="btn btn-link btn-accent btn-sm"> <el-icon> <Folder /></el-icon> voir </a>
                 </template>
             </el-table-column>
-            <el-table-column width="50px">
+            <el-table-column width="70px">
                 <template #default="scope">
                     <button class="btn btn-sm btn-error" type="button"  v-if="scope.row.state=='soumise'" @click="async ()=>{ await removeDemande(scope.row.id) }" ><el-icon><Delete/></el-icon></button>
                 </template>

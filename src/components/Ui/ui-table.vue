@@ -180,12 +180,12 @@ defineExpose({
     <div class="rounded-2xl p-4 bg-white mt-3">
       <slot></slot>
           <!-- Filter input for data table -->
-    <el-input
-      v-model="filterText"
-      placeholder="Tapez pour filtrer"
-      class="pb-4"
-      clearable
-    />
+      <el-input
+        v-model="filterText"
+        placeholder="Tapez pour filtrer"
+        class="pb-4"
+        clearable
+      />
     
       <!-- Data table -->
       <el-table
