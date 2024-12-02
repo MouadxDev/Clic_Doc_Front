@@ -4,6 +4,7 @@
     import {RendezVous} from '../../../core/Clients/RendezVous.ts'
     import { useRdvStore } from '../../../core/Data/stores/rendez-vous';
     import moment from 'moment';
+import { ElMessage, ElMessageBox } from 'element-plus';
 
 
     const client = new RendezVous();
@@ -19,7 +20,31 @@
     const innerList : Ref<Array<any>> = ref([])
 
     const mainList : Ref<Array<any>> = ref([])
-	
+    
+    async function confirmDelete(id: number) {
+  // Open a confirmation dialog
+        const confirm = await ElMessageBox.confirm(
+            'Êtes-vous sûr de vouloir supprimer ce rendez-vous ?',
+            'Confirmation',
+            {
+            confirmButtonText: 'Supprimer',
+            cancelButtonText: 'Annuler',
+            type: 'warning',
+            }
+        ).catch(() => false); // If the user cancels, handle it gracefully
+
+        if (confirm) {
+            try {
+            // Perform delete action
+            await client.delete(id); // Assuming `client.delete` exists and handles API deletion
+            // Update the events list
+            await changeToEvents();
+            ElMessage.success('Le rendez-vous a été supprimé avec succès.');
+            } catch (error) {
+            ElMessage.error('Une erreur s’est produite lors de la suppression.');
+            }
+        }
+        }
 
     const changeToEvents = async()=>{
 		loaded.value=false
@@ -108,8 +133,6 @@
     }, { deep: true})
 	
 
-
-
     const config = {
       dayBoundaries: {
         start: 6,
@@ -177,7 +200,7 @@
 
 <template>
     <div>
-        <Qalendar :config="config" @edit-event="(id:number)=>{show(id)}" :events="eventss" @datetime-was-clicked="(datetime:any)=>{addRDV(datetime)}" v-if="loaded">
+        <Qalendar :config="config" @edit-event="(id:number)=>{show(id)}" :events="eventss" @delete-event="(id:number)=>{confirmDelete(id)}"  @datetime-was-clicked="(datetime:any)=>{addRDV(datetime)}" v-if="loaded">
             
         </Qalendar>
         <div class="text-center text-2xl" v-else>

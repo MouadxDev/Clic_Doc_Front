@@ -41,6 +41,23 @@ export class RendezVous {
         }
     }
 
+    public async delete(id: number): Promise<any> {
+        try {
+            const response = await this.client.delete("/" + id);
+            ElMessage.success("Rendez-vous supprimé avec succès.");
+            return {
+                status: response.status,
+                data: response.data
+            };
+        } catch (error: any) {
+            ElMessage.error("Erreur lors de la suppression du rendez-vous.");
+            return {
+                status: error.status,
+                data: error.response.data
+            };
+        }
+    }
+    
     public async getByDate(date:string) :Promise<any>{
         try {
             const response = await this.client.get("/create?date="+date)

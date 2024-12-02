@@ -169,6 +169,9 @@ import { useAuthStore } from '../../../core/Data/stores/auth';
             result[key] = result[key].join(', ');
         });
         consultation.value=await waitingClient.isWaiting({patient_id:patient.value.id})
+        console.log("consultation.value");
+        console.log(consultation.value);
+        
         loading.close()
         ui.setFold(true)
     }
